@@ -5,9 +5,9 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    bucket         = "your-tf-state-bucket"
-    key            = "sandbox/terraform.tfstate"  # Replace with the appropriate key for each environment
-    region         = "us-west-2"  # Replace with your desired region
+    bucket = "your-tf-state-bucket"
+    key    = "staging/terraform.tfstate"  # Adjust the key to reflect the correct environment
+    region = "us-west-2"  # Replace with your desired region
   }
 }
 
@@ -46,14 +46,14 @@ module "s3_example" {
   # Add any other S3 module configurations as needed
 }
 
-output "ec2_instance_id" {
-  description = "ID of the created EC2 instance"
-  value       = module.ec2_example.instance_id
+output "ec2_instance_ids" {
+  description = "IDs of the created EC2 instances"
+  value       = module.ec2_example.instance_ids
 }
 
-output "ec2_public_ip" {
-  description = "Public IP address of the created EC2 instance"
-  value       = module.ec2_example.public_ip
+output "ec2_public_ips" {
+  description = "Public IP addresses of the created EC2 instances"
+  value       = module.ec2_example.public_ips
 }
 
 output "sg_id" {
